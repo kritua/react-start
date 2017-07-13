@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import './style.scss'
+import classNames from 'classnames/bind'
+
+import PageHeaders from 'blocks/page-headers'
+import Nav from 'block/nav'
+
+import style from './style.scss'
+const classnames = classNames.bind(style);
 
 class Header extends Component {
 	
@@ -12,6 +18,14 @@ class Header extends Component {
 
 	get elHeaderLogo() {
 
+	}
+
+	get elPageHeaders() {
+		const props = {
+
+		};
+
+		return <PageHeaders {...props} />
 	}
 	
 	render() {
@@ -36,33 +50,15 @@ class Header extends Component {
 							</button>
 						</div>
 					</div>
-					<nav className="header__menu">
-						<ul className="header__menu-list">
-							<li className="header__menu-item header__menu-item--active"><a href="#">Главная</a></li>
-							<li className="header__menu-item"><a href="about.php">О компании</a></li>
-							<li className="header__menu-item"><a href="features.php">Преимущества</a></li>
-							<li className="header__menu-item"><a href="services.php">Услуги</a></li>
-							<li className="header__menu-item"><a href="docs.php">Документация</a></li>
-							<li className="header__menu-item"><a href="regions.php">Регионы</a></li>
-							<li className="header__menu-item"><a href="contacts.php">Контакты</a></li>
-							<li className="header__menu-item" />
-						</ul>
-					</nav>
+					<Nav />
 					<div className="header__button-order">
 						<a className="header__phone" href="tel:88007078050">8 (800) 707-80-50</a>
 					</div>
 				</div>
-				<section className="page-headers">
-					<div className="main-container">
-						<h1 className="page-headers__h1">Перевозка <span>габаритных</span> и <span>негабаритных</span><br />грузов любой сложности</h1>
-						<p className="page-headers__text" />
-						<a href="#quote" className="standart-button">Отправить заявку</a><br />
-						<a className="standart-button standart-button--header standart-button--index modal-window__click">Заказать звонок</a>
-					</div>
-				</section>
+				{this.elPageHeaders}
 			</header>
 		)
 	}
 }
 
-export default Header;
+export { Header as default, style };

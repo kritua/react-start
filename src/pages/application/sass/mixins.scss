@@ -1,12 +1,5 @@
-// Colors
-
-$clr-white: #ffffff;
-$clr-black: #000000;
-$clr-purple: #010028;
-$clr-red: #d22856;
-
-
 //Media queries
+
 $mobile-width: 321px;
 $tablet-width: 700px;
 $desktop-width: 1200px;
@@ -15,8 +8,6 @@ $desktop-mac-width: 1440px;
 $desktop-extra-width: 1600px;
 $retina-res: "min-resolution: 144dpi";
 $retina-dpi: "min-resolution: 1.5dppx";
-
-//Mixins
 
 @mixin font-regular() {
 	font-family: "Roboto", 'Helvetica Neue', Arial, sans-serif;
@@ -80,15 +71,3 @@ $retina-dpi: "min-resolution: 1.5dppx";
 		}
 	}
 }
-
-@mixin bg-images($item, $source) {
-	@for $i from 1 to 31 {
-		.#{$item}-#{$i} {
-			background: url('#{$source}-#{$i}.jpg') no-repeat center;
-			background-size: cover;
-		}
-	}
-}
-
-
-
