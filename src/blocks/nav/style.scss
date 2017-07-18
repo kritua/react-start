@@ -2,6 +2,54 @@
 
 	.nav {
 
+		&__menu {
+			flex-basis: 100%;
+			display: flex;
+			flex-direction: column;
+		}
 
+		&__menu-list {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			@include adaptive(desktop) {
+				display: flex;
+				justify-content: space-between;
+				flex-wrap: wrap;
+			}
+
+			@include adaptive(desktop-extra) {
+				flex-wrap: nowrap;
+			}
+		}
+
+		&__menu-item {
+			position: relative;
+			background-color: transparentize($clr-purple, 0.3);
+			text-align: center;
+			border-top: 1px solid $clr-white;
+			border-bottom: 2px solid $clr-black;
+			padding: 15px 0;
+
+			a {
+				font-size: 18px;
+				line-height: 30px;
+				color: white;
+				text-transform: uppercase;
+				text-decoration: none;
+				white-space: nowrap;
+				@include adaptive(desktop) {
+					font-size: 15px;
+					text-transform: none;
+				}
+			}
+			&:last-child {
+				
+				@include adaptive(mobile) {
+					border-bottom: none;
+				}
+			}
+		}
 	}
 }

@@ -9,7 +9,6 @@ module.exports = {
 		block: resolve(global.webpack.context, 'src', 'blocks'),
 		page : resolve(global.webpack.context, 'src', 'pages'),
 		vars : resolve(global.webpack.context, 'src', 'pages', 'application', 'sass', 'vars')
-
 	},
 	enforceExtension : false,
 	extensions : [

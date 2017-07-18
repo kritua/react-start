@@ -1,0 +1,56 @@
+:local {
+
+	.svg-icons {
+		width: 20px;
+		height: 20px;
+
+		&__logo {
+
+			& > .st0 {
+				fill: #0073d1;
+			}
+			& > .st1 {
+				fill: #00c5f0;
+			}
+			& > .st2 {
+				fill: #dedde0;
+			}
+			& > .st3 {
+				fill: #acabb1;
+			}
+
+			&_small {
+
+				& > .st0 {
+					fill: #0073d1;
+				}
+				& > .st1 {
+					fill: #00c5f0;
+				}
+				& > .st2 {
+					fill: #dedde0;
+				}
+				& > .st3 {
+					fill: #acabb1;
+				}
+			}
+
+			&_full {
+				width: 76px;
+				height: 38px;
+
+				& > .st4 {
+					fill: url('#firstLine');
+				}
+
+				& > .st5 {
+					fill: url('#secondLine');
+				}
+
+				& > .st6 {
+					fill: url('#thirdLine');
+				}
+			}
+		}
+	}
+}

@@ -29,7 +29,7 @@ class Button extends Component {
 
 	get elButton() {
 		let props = {
-			className     : this.props.className,
+			className     : classnames('button', this.props.className),
 			'data-pending': this.props.pending,
 			children      : this.props.children,
 			onClick       : this.props.onClick

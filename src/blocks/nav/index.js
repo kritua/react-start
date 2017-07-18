@@ -10,30 +10,31 @@ class Nav extends Component {
 	static displayName = '[block] nav';
 	
 	static propTypes = {
-		className: PropTypes.string
+		className: PropTypes.string,
+		active   : PropTypes.bool
 	};
 
 	get elList() {
 		const listItems = [
-
+			{ href: 'index.html', text: 'Главная' },
+			{ href: 'about.html', text: 'О компании'  },
+			{ href: 'features.html', text: 'Преимущества' },
+			{ href: 'services.html', text: 'Услуги' },
+			{ href: 'contacts.html', text: 'Контакты' }
 		];
 
 		return (
-			<ul className={classnames("header__menu-list")}>
-				<li className={classnames("header__menu-item")}><a href="index.html">Главная</a></li>
-				<li className={classnames("header__menu-item")}><a href="about.html">О компании</a></li>
-				<li className={classnames("header__menu-item")}><a href="features.html">Преимущества</a></li>
-				<li className={classnames("header__menu-item")}><a href="services.html">Услуги</a></li>
-				<li className={classnames("header__menu-item")}><a href="docs.html">Документация</a></li>
-				<li className={classnames("header__menu-item")}><a href="regions.html">Регионы</a></li>
-				<li className={classnames("header__menu-item")}><a href="contacts.html">Контакты</a></li>
+			<ul className={classnames('nav__menu')}>
+				{listItems.map((item, index) => {
+					return <li key={index} className={classnames('nav__menu-item', { '': this.props.active })}><a href={item.href}>{item.text}</a></li>
+				})} 
 			</ul>
 		)
 	}
 	
 	render() {
 		return (
-			<nav className={classnames("header__menu")}>
+			<nav className={classnames('nav')}>
 				{this.elList}
 			</nav>
 		)

@@ -6,11 +6,17 @@
 		position: relative;
 		z-index: 2;
 
-		&_pages {
-			margin-top: 0;
-			padding: 0 20px 5vh;
-			.page-headers__h1 {
-				margin-top: 0;
+		&__buttons {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+		}
+
+		&__button {
+
+			&:not(:first-child) {
+				margin-top: 10px;
 			}
 		}
 

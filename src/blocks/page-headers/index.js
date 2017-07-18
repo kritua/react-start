@@ -14,15 +14,52 @@ class PageHeaders extends Component {
 	static propTypes = {
 		className: PropTypes.string
 	};
+
+	state = {
+		modal: false
+	};
+
+	get elSendRequest() {
+		const props = {
+			href     : "#quote",
+			className: classnames('page-headers__button'),
+			children : 'Отправить заявку'
+
+		};
+
+		return <Button {...props} />
+	}
+
+	get elGetCall() {
+		const props = {
+			tagName: 'button',
+			className: classnames('page-headers__button'),
+			children: 'Заказать звонок',
+			onClick: this.onClick
+		};
+
+		return <Button {...props} />
+	}
+
+	onClick = (e) => {
+		e.preventDefault();
+
+		this.setState({
+			modal: !this.state.modal
+		})
+	};
 	
 	render() {
+		console.log(this.state);
 		return (
 			<section className={classnames("page-headers", this.props.className)}>
-				<div className={classnames("page-header__content")}>
+				<div className={classnames("page-headers__content")}>
 					<h1 className={classnames("page-headers__h1")}>Плёнки <span>ПЭТ</span> оптом <br />по цене завода-производителя</h1>
 					<p className={classnames("page-headers__text")} />
-					<a href="#quote" className={classnames("standart-button")}>Отправить заявку</a><br />
-					<Button />
+					<div className={classnames('page-headers__buttons')}>
+						{this.elSendRequest}
+						{this.elGetCall}
+					</div>
 				</div>
 			</section>
 		)

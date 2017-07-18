@@ -1,80 +1,39 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = () => {
+module.exports = (env = {}) => {
 	global.webpack = {
-		context: resolve(__dirname, '..')
+		context: resolve(__dirname, '..'),
+		env: process.env.NODE_ENV || env.production ? 'production' : 'development',
+		production: !!env.production,
+		development: !env.production
 	};
 	
 	const config = {
 		context: global.webpack.context,
 		entry: {
-			bundle: resolve(global.webpack.context, 'src', 'index.js')
+			bundle: resolve(global.webpack.context, 'src', 'index.js'),
+			index : resolve(global.webpack.context, 'src', 'index.html')
 		},
 		output: {
 			filename: '[name].js',
 			path: resolve(global.webpack.context, 'build')
 		},
 		devServer: {
-			contentBase: resolve(global.webpack.context, 'src'),
+			contentBase: resolve(global.webpack.context, 'build'),
 			port: 9000
 		},
 		resolve: require('./resolve'),
 		module: {
-			rules: [
-				{
-					test: /\.jsx?$/,
-					include: [
-						resolve(global.webpack.context, 'src')
-					],
-					exclude: [/node_modules/],
-					use: [{
-						loader: 'babel-loader',
-						options: {
-							presets: ['es2015', 'react', 'stage-0']
-						}
-					}]
-				},
-				{
-					test: /\.(scss|sass|css)$/,
-					use: [{
-						loader: 'style-loader',
-					}, {
-						loader: 'css-loader',
-						options: {
-							localIdentName: '[local]-[hash:hex:5]'
-						}
-					}, {
-						loader: 'sass-loader'
-					}, {
-						loader: 'sass-resources-loader',
-						options: {
-							resources: [
-								'./src/pages/application/sass/mixins.scss',
-								'./src/pages/application/sass/vars.scss'
-							]
-						}
-					}]
-				},
-				{
-					test: /\.(jpe?g|png|ico|gif|ttf|svg)$/,
-					use: [{
-						loader: 'url-loader'
-					}, {
-						loader: 'img-loader',
-						options: {
-							mozjpeg: {
-								progressive: true,
-								quality: 70
-							},
-							optipng: {
-								optimizationLevel: 5
-							}
-						}
-					}]
-				}
-			]
-		}
+			rules: require('./module.rules')
+		},
+		plugins: [
+			new ExtractTextPlugin({
+				filename: '/css/style.css',
+				disable: global.webpack.development
+			})
+		]
 	};
 
 	return config

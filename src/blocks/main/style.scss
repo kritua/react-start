@@ -1,0 +1,15 @@
+:local {
+
+	.main {
+
+		&__content {
+			padding: $mainPadding;
+		}
+
+		&__header {
+			background: linear-gradient(transparentize($clr-purple, 0.3), transparentize($clr-purple, 0.3)), url('./img/bg-full-1.jpg') center no-repeat;
+			background-size: cover;
+			height: calc(100vh - 48px);
+		}
+	}
+}
