@@ -6,6 +6,7 @@ import './img/icon-72x72.png';
 import './img/icon-96x96.png';
 import './img/icon-144x144.png';
 import './img/icon-192x192.png';
+import '../../index.html'
 
 import Header from 'block/header'
 import Main from 'block/main'

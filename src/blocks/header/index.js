@@ -188,7 +188,6 @@ class Header extends Component {
 	};
 
 	render() {
-		console.log(this.state.open, this.state.open.menu)
 		return (
 			<header className={classnames('header')}>
 				<div className={classnames('header__logo')}>
