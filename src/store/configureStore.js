@@ -1,8 +1,11 @@
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from '../reducers'
-import logger from 'redux-logger'
+import { createLogger } from 'redux-logger'
 
 export default function configureStore(initialState) {
+	const logger = createLogger({
+		diff: true
+	});
 	const store = createStore(rootReducer, initialState, applyMiddleware(logger));
 
 	if(module.hot) {

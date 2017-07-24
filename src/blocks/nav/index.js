@@ -12,9 +12,7 @@ import { Home, Phone } from 'block/svg-icons'
 
 
 @connect((state) => ({
-	active: state.setActive
-}), (dispatch) => ({
-	actions: bindActionCreators(actions, dispatch)
+	active: state.setActive.active
 }))
 class Nav extends Component {
 
@@ -28,15 +26,12 @@ class Nav extends Component {
 		setActive: PropTypes.func
 	};
 
-	state = {
-		active: {}
+	static contextTypes = {
+		store: PropTypes.object
 	};
 
-	activeItem = (item) => (e) => {
-		this.setState({
-			active: item
-		});
-		actions.setActive(item)
+	activeItem = (item) => () => {
+		this.props.dispatch(actions.setActive(item))
 	};
 
 	icons = {
@@ -45,7 +40,7 @@ class Nav extends Component {
 	};
 
 	elIcon = (icon) => {
-		if (icon) {
+		if(icon) {
 			const Icon = this.icons[icon];
 
 			return <Icon className={classnames('nav__icon')}/>
@@ -53,7 +48,7 @@ class Nav extends Component {
 	};
 
 	elLink = (item) => {
-		if (item.href.includes('/')) {
+		if(item.href.includes('/')) {
 			return <Link to={item.href}>{item.text}</Link>
 		} else {
 			return <a href={item.href}>{item.text}</a>
@@ -66,9 +61,10 @@ class Nav extends Component {
 			<nav className={classnames(this.props.className)}>
 				<div className={classnames('nav__menu', this.props.menuClassName)}>
 					{this.props.children.map((item, index) => {
+						console.log(13123123, this.props.active, this.props.active === index, index)
 						return (
-							<div key={index} onClick={this.activeItem(index)} data-active={this.state.active === index}
-							     className={classnames('nav__menu-item', {'123': this.state[`active-${item}`]})}>
+							<div key={index} onClick={this.activeItem(index)} data-active={this.props.active === index}
+							     className={classnames('nav__menu-item', {'123': this.props.active === index})}>
 								{this.elIcon(item.icon)}
 								{this.elLink(item)}
 							</div>

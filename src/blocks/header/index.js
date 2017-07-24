@@ -2,8 +2,8 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import classNames from 'classnames/bind'
 import { CSSTransition } from 'react-transition-group'
+import { Link } from 'react-router-dom'
 
-import PageHeaders from 'block/page-headers'
 import Nav from 'block/nav'
 
 import { Logo, Phone } from 'block/svg-icons'
@@ -139,9 +139,9 @@ class Header extends Component {
 		};
 
 		return (
-			<a href="/" className={classnames('header__logo-wrapper')}>
+			<Link to="/" className={classnames('header__logo-wrapper')}>
 				<Logo {...props} />
-			</a>
+			</Link>
 		)
 	}
 
