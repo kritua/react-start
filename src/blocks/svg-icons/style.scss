@@ -7,32 +7,16 @@
 		&__logo {
 
 			& > .st0 {
-				fill: #0073d1;
+				fill: $colorIconMain;
 			}
 			& > .st1 {
-				fill: #00c5f0;
+				fill: $colorIconSecond;
 			}
 			& > .st2 {
-				fill: #dedde0;
+				fill: $colorIconThird;
 			}
 			& > .st3 {
-				fill: #acabb1;
-			}
-
-			&_small {
-
-				& > .st0 {
-					fill: #0073d1;
-				}
-				& > .st1 {
-					fill: #00c5f0;
-				}
-				& > .st2 {
-					fill: #dedde0;
-				}
-				& > .st3 {
-					fill: #acabb1;
-				}
+				fill: $colorIconFourth;
 			}
 
 			&_full {

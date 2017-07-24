@@ -1,14 +1,149 @@
 :local {
 
 	.header {
-		position: relative;
+		position: fixed;
 		text-align: center;
+		width: 100%;
+		height: 48px;
+		z-index: 1;
+		background: $colorWhite;
+
+		&__logo-wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
 
 		&__logo {
 			display: flex;
 			flex-basis: 100%;
-			padding: $tinyPadding $mainPadding;
+			padding: 0;
 			justify-content: space-between;
+			align-items: center;
+		}
+
+		&__button-menu {
+			width: 48px;
+			height: 48px;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: transparentize($colorGrey, 0.9);
+		}
+
+		&__button {
+			position: relative;
+
+			&_burger {
+				width: 20px;
+				height: 2px;
+				background: darken($colorMain, 20%);
+				transition: all 0.5s ease;
+
+				&::before,
+				&::after {
+					content: '';
+					position: absolute;
+					width: 20px;
+					height: 2px;
+					background: darken($colorMain, 20%);
+					left: 0;
+					transition: all 0.5s ease;
+				}
+
+				&::before {
+					top: -5px;
+				}
+
+				&::after {
+					top: 5px;
+				}
+
+				&[data-close="true"] {
+					background: transparent;
+					width: 16px;
+
+					&::before,
+					&::after {
+						transform-origin: 15%;
+					}
+
+					&::before {
+						transform: rotate(45deg);
+					}
+
+					&::after {
+						transform: rotate(-45deg);
+					}
+				}
+			}
+
+			&_phone {
+				width: 20px;
+				height: 20px;
+				fill: darken($colorMain, 20%);
+			}
+		}
+
+		&__nav {
+			position: fixed;
+			top: 48px;
+			bottom: 0;
+			width: 100%;
+			z-index: 1;
+
+			&_revert {
+
+				&.header__nav-enter {
+					transform: translate(220px, 0);
+
+					&.header__nav-enter_active {
+						transition: all 500ms ease-in-out;
+						transform: translate(0, 0);
+					}
+				}
+
+				&.header__nav-exit {
+					transform: translate(0, 0);
+
+					&.header__nav-exit_active {
+						transition: all 300ms ease-in-out;
+						transform: translate(0, 0);
+					}
+				}
+			}
+		}
+
+		&__nav-menu {
+
+			&_revert {
+				margin-left: auto;
+			}
+		}
+
+		&__nav-inside {
+			width: 100%;
+			height: 100%;
+		}
+
+		&__nav-enter {
+			transform: translate(-220px, 0);
+
+			&.header__nav-enter_active {
+				transition: all 500ms ease-in-out;
+				transform: translate(0, 0);
+			}
+		}
+
+		&__nav-exit {
+			transform: translate(0, 0);
+
+			&.header__nav-exit_active {
+				transition: all 300ms ease-in-out;
+				transform: translate(-220px, 0);
+			}
 		}
 	}
 }
+

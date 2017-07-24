@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react'
 import classNames from 'classnames/bind'
 
-import style from './style'
+import style from './../style'
 const classnames = classNames.bind(style);
 
 class Logo extends PureComponent {

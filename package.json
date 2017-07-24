@@ -11,30 +11,35 @@
     },
     "homepage": "https://github.com/kritua/react-start",
     "dependencies": {
-        "babel-eslint": "^7.2.3",
         "classnames": "^2.2.5",
-        "eslint": "^4.1.1",
-        "eslint-plugin-react": "^7.1.0",
         "prop-types": "^15.5.10",
         "react": "^15.6.1",
         "react-dom": "^15.6.1",
         "react-redux": "^5.0.5",
+        "react-router": "^4.1.2",
+        "react-router-dom": "^4.1.2",
         "react-scripts": "1.0.10",
-        "react-transition-group": "^1.2.0"
+        "react-transition-group": "^2.1.0"
     },
     "scripts": {
         "start": "react-scripts start --config=src",
         "test": "react-scripts test --env=jsdom",
         "eject": "react-scripts eject",
         "dev": "NODE_ENV=development webpack --config=webpack && webpack-dev-server --config=webpack --hot --inline --progress",
-        "build": "NODE_ENV=production1 webpack --config=webpack --progress"
+        "build": "NODE_ENV=production webpack --config=webpack --progress"
     },
     "devDependencies": {
         "babel-core": "^6.25.0",
+        "babel-eslint": "^7.2.3",
         "babel-loader": "^7.1.1",
+        "babel-plugin-transform-decorators-legacy": "^1.3.4",
         "babel-preset-es2015": "^6.24.1",
         "babel-preset-react": "^6.24.1",
         "babel-preset-stage-0": "^6.24.1",
+        "eslint": "^4.1.1",
+        "eslint-loader": "^1.9.0",
+        "eslint-plugin-react": "^7.1.0",
+        "express": "^4.15.3",
         "extract-text-webpack-plugin": "^3.0.0",
         "file-loader": "^0.11.2",
         "img-loader": "^2.0.0",

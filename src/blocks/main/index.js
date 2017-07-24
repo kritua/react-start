@@ -22,13 +22,6 @@ class Main extends Component {
 						<PageHeaders />
 					</div>
 				</section>
-
-				{/*<div className={classnames("header__navbar")}>*/}
-					{/*<Nav />*/}
-					{/*<div className={classnames("header__button-order")}>*/}
-						{/*<a className={classnames("header__phone")} href="tel:88007078050">8 (800) 707-80-50</a>*/}
-					{/*</div>*/}
-				{/*</div>*/}
 			</main>
 		)
 	}

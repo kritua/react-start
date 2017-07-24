@@ -6,7 +6,8 @@ module.exports = {
 		loader: 'url-loader',
 		options: {
 			limit: 10240,
-			name: '/img/[name].[ext]'
+			name: '/img/[name].[ext]',
+			outputPath: () => {console.log(process.env.NODE_ENV || global.webpack.env)}
 		}
 	}, {
 		loader: 'img-loader',

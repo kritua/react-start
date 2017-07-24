@@ -21,7 +21,8 @@ module.exports = [
 		use: [{
 			loader: 'babel-loader',
 			options: {
-				presets: ['es2015', 'react', 'stage-0']
+				presets: ['es2015', 'react', 'stage-0'],
+				plugins: ['transform-decorators-legacy']
 			}
 		}]
 	},
@@ -31,10 +32,7 @@ module.exports = [
 			loader: 'url-loader',
 			options: {
 				limit: 10240,
-				outputPath: (url) => {
-					console.log(global.webpack.development, 123123123123)
-					return `./../build/${url}`
-				},
+				outputPath: (url) => `./../build/${url}`,
 				name: 'img/[name].[ext]'
 			}
 		}, {
@@ -46,14 +44,8 @@ module.exports = [
 		use: [{
 			loader: 'file-loader',
 			options: {
-				publicPath: (url) => {
-					console.log(url);
-					return url.replace('./../build', '')
-				},
-				outputPath: (url) => {
-					console.log(url);
-					return `./../build/${url}`
-				},
+				publicPath: (url) => url.replace('./../build', ''),
+				outputPath: (url) => `./../build/${url}`,
 				name: '/img/[name].[ext]'
 			}
 		}, {

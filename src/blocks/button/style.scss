@@ -4,10 +4,10 @@
 		@include font-regular();
 		font-size: 16px;
 		line-height: 24px;
-		color: $clr-white;
+		color: $colorWhite;
 		white-space: nowrap;
 		text-decoration: none;
-		background: linear-gradient($clr-pink, 50%, darken($clr-pink, 2%) 50%);
+		background: linear-gradient(darken($colorSecond, 15%), darken($colorSecond, 25%) 50%);
 		padding: 10px 20px;
 		border-radius: 5px;
 		cursor: pointer;
@@ -20,11 +20,11 @@
 		}
 
 		&:hover {
-			box-shadow: 0 0 0 1px $clr-white;
+			box-shadow: 0 0 0 1px $colorWhite;
 		}
 
 		&:active {
-			color: transparentize($clr-white, 0.5);
+			color: transparentize($colorWhite, 0.5);
 		}
 
 	}

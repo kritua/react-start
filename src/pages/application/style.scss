@@ -44,7 +44,8 @@
 	}
 
 	a,
-	input {
+	input,
+	button {
 		outline: 0;
 	}
 
@@ -56,18 +57,19 @@
 	h6,
 	p,
 	input,
-	body {
+	body,
+	button {
 		margin: 0;
 		padding: 0;
 	}
 
-	img {
+	img,
+	button {
 		border: 0;
 	}
 
 	main {
 		position: relative;
-		z-index: 2;
 	}
 
 
@@ -81,23 +83,29 @@
 		margin-top: 0;
 	}
 
+	a {
+		text-decoration: none;
+		color: darken($colorMain, 20%);
+		@include font-thin;
+	}
+
 	.alert {
 		text-align: center;
-		color: $clr-white;
+		color: $colorWhite;
 		padding: 20px 100px;
 		display: inline-block;
 	}
 
 	.alert-danger {
-		background: $clr-red;
+		background: $colorSecond;
 	}
 
 	.alert-success {
-		background: $clr-red;
+		background: $colorSecond;
 	}
 
 	.alert-info {
-		background: $clr-red;
+		background: $colorSecond;
 	}
 
 	.message {
@@ -110,7 +118,7 @@
 
 	.application {
 		text-align: center;
-		color: $clr-grey;
+		color: $colorGrey;
 
 		&__logo {
 			animation: spin infinite 20s linear;
@@ -118,7 +126,7 @@
 		}
 
 		&__header {
-			background-color: #222222;
+			background-color: darken($colorGrey, 20%);
 			height: 150px;
 			padding: 20px;
 			color: white;
