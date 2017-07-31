@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import classNames from 'classnames/bind'
-import { CSSTransition } from 'react-transition-group'
+import { Transition } from 'react-transition-group'
 import { Link } from 'react-router-dom'
 
 import Nav from 'block/nav'
@@ -39,7 +39,9 @@ class Header extends Component {
 	};
 
 	state = {
-		open: {}
+		open: {},
+		entering: {},
+		exiting: {}
 	};
 
 	get elBurger() {
@@ -47,7 +49,7 @@ class Header extends Component {
 			className: classnames('header__button', 'header__button_burger'),
 			type        : 'button',
 			id          : 'menu',
-			'data-close': this.state.open['menu']
+			'data-close': this.state.open.menu
 		};
 
 		return (
@@ -72,65 +74,70 @@ class Header extends Component {
 	}
 
 	get elNav() {
-		if(this.state.open.menu && !this.state.open.phone) {
-			const props = {
-				children: [
-					{
-						href: '/',
-						text: 'Главная',
-						icon: 'home'
-					},
-					{
-						href: '/about',
-						text: 'О компании',
-						icon: 'home'
-					},
-					{
-						href: '/features',
-						text: 'Преимущества',
-						icon: 'home'
-					},
-					{
-						href: '/services',
-						text: 'Услуги',
-						icon: 'home'
-					},
-					{
-						href: '/contacts',
-						text: 'Контакты',
-						icon: 'home'
-					}
-				],
-				onClick  : this.onOpen('menu'),
-				className: classnames('header__nav-inside')
-			};
+		const props = {
+			children: [
+				{
+					href: '/',
+					text: 'Главная',
+					icon: 'home'
+				},
+				{
+					href: '/about',
+					text: 'О компании',
+					icon: 'home'
+				},
+				{
+					href: '/features',
+					text: 'Преимущества',
+					icon: 'home'
+				},
+				{
+					href: '/services',
+					text: 'Услуги',
+					icon: 'home'
+				},
+				{
+					href: '/contacts',
+					text: 'Контакты',
+					icon: 'home'
+				}
+			],
+			onClick  : this.onOpen('menu')
+		};
 
-			return <Nav {...props} />
-		}
+
+		return (
+			<Transition in={this.state.open.menu} timeout={{enter: 500, exit: 300}} mountOnEnter={true} unmountOnExit={true}>
+				{(status) => <Nav {...props} className={classnames('header__nav', `header__${status}`)} />}
+			</Transition>
+		)
+
 	}
 
 	get elPhone() {
-		if(this.state.open.phone && !this.state.open.menu) {
-			const props = {
-				children: [
-					{
-						href: 'tel:88008009090',
-						text: '8 (800) 800-90-90',
-						icon: 'phone'
-					},
-					{
-						href: 'tel:89009090900',
-						text: '8 (800) 909-09-00',
-						icon: 'phone'
-					},
-				],
-				onClick  : this.onOpen('menu'),
-				className: classnames('header__nav-inside'),
-				menuClassName: classnames('header__nav-menu_revert')
-			};
+		const props = {
+			children: [
+				{
+					href: 'tel:88008009090',
+					text: '8 (800) 800-90-90',
+					icon: 'phone'
+				},
+				{
+					href: 'tel:89009090900',
+					text: '8 (800) 909-09-00',
+					icon: 'phone'
+				},
+			],
+			onClick      : this.onOpen('phone'),
+			menuClassName: classnames('header__nav-menu_revert')
+		};
 
-			return <Nav {...props} />
-		}
+		return (
+			<Transition in={this.state.open.phone} mountOnEnter={true} timeout={{enter: 500, exit: 300}} unmountOnExit={true}>
+				{(status) => <Nav {...props} className={classnames('header__nav', `header__${status}`, `header__${status}_rev`)} />}
+			</Transition>
+		)
+
 	}
 
 	get elLogo() {
@@ -146,25 +153,7 @@ class Header extends Component {
 	}
 
 	get elMenu() {
-		if(this.state.open.menu) {
-			return (
-				<Fade in={this.state.open.menu}>
-					<div className={classnames('header__nav')}>
-						{this.elNav}
-					</div>
-				</Fade>
-			)
-		}
-
-		if(this.state.open.phone) {
-			return (
-				<Fade in={this.state.open.phone}>
-					<div className={classnames('header__nav', 'header__nav_revert')}>
-						{this.elPhone}
-					</div>
-				</Fade>
-			)
-		}
+		return this.elNav
 	}
 
 	onOpen = (item) => (e) => {
@@ -195,7 +184,8 @@ class Header extends Component {
 					{this.elLogo}
 					{this.elPhoneCall}
 				</div>
-				{this.elMenu}
+				{this.elNav}
+				{this.elPhone}
 			</header>
 		)
 	}

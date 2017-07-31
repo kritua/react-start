@@ -3,21 +3,19 @@
 	.button {
 		@include font-regular();
 		font-size: 16px;
-		line-height: 24px;
+		line-height: 3;
+		width: 100%;
+		height: 48px;
+		box-sizing: border-box;
 		color: $colorWhite;
 		white-space: nowrap;
 		text-decoration: none;
 		background: linear-gradient(darken($colorSecond, 15%), darken($colorSecond, 25%) 50%);
-		padding: 10px 20px;
 		border-radius: 5px;
 		cursor: pointer;
 		transition: all 0.2s ease;
 		outline: none;
 		border: none;
-
-		@include adaptive(tablet) {
-			font-size: 20px;
-		}
 
 		&:hover {
 			box-shadow: 0 0 0 1px $colorWhite;
@@ -25,6 +23,11 @@
 
 		&:active {
 			color: transparentize($colorWhite, 0.5);
+			box-shadow: 0 0 0 1px $colorWhite;
+		}
+
+		&:disabled {
+			background: linear-gradient(darken($colorGrey, 15%), darken($colorGrey, 25%) 50%);
 		}
 
 	}

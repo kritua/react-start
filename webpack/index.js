@@ -7,7 +7,7 @@ module.exports = (env = {}) => {
 		env        : process.env.NODE_ENV || env.production ? 'production' : 'development',
 		production : !!env.production,
 		development: !env.production,
-		server     : env.server,
+		server     : !!env.server,
 		client     : !env.server,
 		type       : env.server ? 'server' : 'client'
 	};

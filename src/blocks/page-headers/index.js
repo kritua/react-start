@@ -50,7 +50,7 @@ class PageHeaders extends Component {
 
 	get elHeader() {
 		const props = {
-			children : <p>Плёнки <span>{this.props.user.name}</span> оптом по цене завода-производителя</p>,
+			children : <span>Плёнки <span className={classnames('page-headers__span')}>{this.props.user.name}</span> оптом по цене завода-производителя</span>,
 			tagName  : 'h1',
 			className: classnames("page-headers__h1")
 		};
@@ -72,7 +72,6 @@ class PageHeaders extends Component {
 			<section className={classnames("page-headers", this.props.className)}>
 				<div className={classnames("page-headers__content")}>
 					{this.elHeader}
-					<p className={classnames("page-headers__text")} />
 					<div className={classnames('page-headers__buttons')}>
 						{this.elSendRequest}
 						{this.elGetCall}

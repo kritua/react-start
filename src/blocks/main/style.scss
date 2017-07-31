@@ -4,7 +4,7 @@
 		padding-top: 48px;
 
 		&__content {
-			padding: $mainPadding;
+			padding: 0 $mainPadding;
 		}
 
 		&__header {
@@ -12,5 +12,14 @@
 			background-size: cover;
 			height: calc(100vh - 48px);
 		}
+
+		&__form {
+			padding: 15px 0;
+		}
+
+		&__form-header {
+			margin: 0 0 15px;
+		}
+
 	}
 }

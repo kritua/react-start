@@ -1,5 +1,9 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import classNames from 'classnames/bind'
+
+import style from './style'
+const classnames = classNames.bind(style);
 
 class Headers extends Component {
 
@@ -24,7 +28,7 @@ class Headers extends Component {
 
 	get elHeader() {
 		const props = {
-			className: this.props.className,
+			className: classnames('headers', `headers__${this.props.tagName}`, this.props.className),
 			children : this.props.children
 		};
 

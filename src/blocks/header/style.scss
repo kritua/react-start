@@ -91,27 +91,11 @@
 			top: 48px;
 			bottom: 0;
 			width: 100%;
-			z-index: 1;
+			height: 100%;
+			transition: opacity 0.3s ease;
 
-			&_revert {
-
-				&.header__nav-enter {
-					transform: translate(220px, 0);
-
-					&.header__nav-enter_active {
-						transition: all 500ms ease-in-out;
-						transform: translate(0, 0);
-					}
-				}
-
-				&.header__nav-exit {
-					transform: translate(0, 0);
-
-					&.header__nav-exit_active {
-						transition: all 300ms ease-in-out;
-						transform: translate(0, 0);
-					}
-				}
+			&_hidden {
+				opacity: 0;
 			}
 		}
 
@@ -122,28 +106,55 @@
 			}
 		}
 
-		&__nav-inside {
-			width: 100%;
-			height: 100%;
-		}
+		&__entering {
+			animation: animate alternate-reverse forwards 0.5s linear;
 
-		&__nav-enter {
-			transform: translate(-220px, 0);
-
-			&.header__nav-enter_active {
-				transition: all 500ms ease-in-out;
-				transform: translate(0, 0);
+			&_rev {
+				animation-name: animate-right;
 			}
 		}
 
-		&__nav-exit {
-			transform: translate(0, 0);
+		&__exiting {
+			animation: animate forwards 0.3s linear;
+			will-change: margin-left;
 
-			&.header__nav-exit_active {
-				transition: all 300ms ease-in-out;
-				transform: translate(-220px, 0);
+			&_rev {
+				animation-name: animate-right;
 			}
 		}
 	}
 }
 
+@keyframes :local(animate) {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	50% {
+		opacity: 0.7;
+		transform: translateX(-110px);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(-220px);
+	}
+}
+
+@keyframes :local(animate-right) {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	50% {
+		opacity: 0.7;
+		transform: translateX(110px);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(220px);
+	}
+}

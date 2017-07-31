@@ -1,45 +1,35 @@
 :local {
 
 	.page-headers {
-		padding: 7vh 20px 25vh;
 		color: $colorWhite;
 		position: relative;
+
+		&__content {
+			padding: 15px 0;
+		}
 
 		&__buttons {
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			flex-direction: column;
+			padding: 15px 1px;
 		}
 
 		&__button {
 
 			&:not(:first-child) {
-				margin-top: 10px;
+				margin-top: 20px;
 			}
 		}
 
+		&__span {
+			color: $colorSecond;
+		}
+
 		&__h1 {
-			position: relative;
-			@include font-light();
-			font-size: 6.5vh;
-			line-height: 6.5vh;
 			color: $colorWhite;
-
-			span {
-				color: $colorSecond;
-			}
-
-			&::after {
-				content: '';
-				position: absolute;
-				bottom: -16px;
-				left: 50%;
-				width: 100px;
-				margin-left: -50px;
-				height: 2px;
-				background-color: $colorSecond;
-			}
+			margin: 30px 0;
 		}
 
 		&__text {
@@ -47,13 +37,6 @@
 			font-size: 16px;
 			line-height: 24px;
 			margin-bottom: 45px;
-		}
-
-		&__h2 {
-			@include font-thin();
-			font-size: 18px;
-			line-height: 30px;
-			margin-top: 0;
 		}
 	}
 }

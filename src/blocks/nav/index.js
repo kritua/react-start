@@ -19,11 +19,11 @@ class Nav extends Component {
 	static displayName = '[block] nav';
 
 	static propTypes = {
-		className: PropTypes.string,
-		children: PropTypes.array.isRequired,
+		className    : PropTypes.string,
+		children     : PropTypes.array.isRequired,
 		menuClassName: PropTypes.string,
-		active: PropTypes.any,
-		setActive: PropTypes.func
+		active       : PropTypes.any,
+		setActive    : PropTypes.func
 	};
 
 	static contextTypes = {
@@ -35,7 +35,7 @@ class Nav extends Component {
 	};
 
 	icons = {
-		home: Home,
+		home : Home,
 		phone: Phone
 	};
 
@@ -56,15 +56,13 @@ class Nav extends Component {
 	};
 
 	get elList() {
-		console.log(this.props.active, 'ACTIVE')
 		return (
-			<nav className={classnames(this.props.className)}>
+			<nav className={classnames(this.props.className)} ref={(node) => { this.$nav = node }}>
 				<div className={classnames('nav__menu', this.props.menuClassName)}>
 					{this.props.children.map((item, index) => {
-						console.log(13123123, this.props.active, this.props.active === index, index)
 						return (
 							<div key={index} onClick={this.activeItem(index)} data-active={this.props.active === index}
-							     className={classnames('nav__menu-item', {'123': this.props.active === index})}>
+							     className={classnames('nav__menu-item', {'nav__menu-item_active': this.props.active === index})}>
 								{this.elIcon(item.icon)}
 								{this.elLink(item)}
 							</div>

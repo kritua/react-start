@@ -1,0 +1,50 @@
+:local {
+
+	.input {
+
+		&__label {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: wrap;
+
+			&:not(:last-child) {
+				margin-bottom: 15px;
+			}
+		}
+
+		&__title {
+			@include font-light();
+			font-size: 12px;
+			color: $colorBlack;
+			font-weight: normal;
+		}
+
+		&__field {
+			padding: 5px;
+			border: 1px solid lighten($colorGrey, 1%);
+			border-radius: 5px;
+			flex-basis: 60%;
+
+			&[data-watch="true"] {
+
+				&:invalid {
+					border-color: $colorSecond;
+				}
+			}
+
+			&:valid {
+				border-color: $colorGreen;
+			}
+		}
+
+		&__error {
+			flex-basis: 100%;
+			color: $colorSecond;
+			margin: 10px 0 0;
+			text-align: left;
+			font-size: 12px;
+		}
+	}
+}

@@ -112,13 +112,17 @@
 		margin: 0 auto 40px;
 		text-align: center;
 	}
+
+	::placeholder {
+		color: $colorGrey;
+	}
 }
 
 :local {
 
 	.application {
 		text-align: center;
-		color: $colorGrey;
+		color: darken($colorGrey, 50%);
 
 		&__logo {
 			animation: spin infinite 20s linear;
